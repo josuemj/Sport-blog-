@@ -1,0 +1,39 @@
+/* Base styling for the post container */
+.post {
+    margin: 30px auto; /* Center the post and add margin */
+    max-width: 90%; /* Set a max-width for larger screens */
+    background-color: #d7cfcf; /* Light background for the post */
+    padding: 20px; /* Padding around the content */
+    border-radius: 10px; /* Rounded corners for the post */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the items vertically */
+    box-sizing: border-box;
+}
+
+/* Styling for the title */
+.post h2 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Modern, sans-serif font for the title */
+    color: #333; /* Dark grey color for text */
+    font-size: 32px; /* Slightly larger font size for the title */
+    margin-top: 0; /* Remove the default margin-top */
+    margin-bottom: 12px; /* Spacing below the title */
+}
+
+/* Styling for the content text */
+.post p {
+    font-family: 'Arial', sans-serif; /* Readable font for the content */
+    color: #000000; /* Medium grey color for the content */
+    line-height: 1.6; /* Improve readability with line height */
+    text-align: center; /* Center-align the text */
+    margin-top: 0;
+    margin-bottom: 20px; /* Spacing below paragraphs */
+    font-size: 18px;
+}
+
+/* Styling for the YouTube video iframe */
+.post iframe {
+    border-radius: 8px; /* Rounded corners for the video */
+    margin-bottom: 20px; /* Space below the video */
+}

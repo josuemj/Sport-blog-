@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Post from './Post';
 function Posts() {
     const [posts, setPosts] = useState(null);  // State to store the API data
     const [loading, setLoading] = useState(true);  // State to track if data is loading
@@ -31,13 +31,21 @@ function Posts() {
     if (error) return <p>Error: {error}</p>;
     return (
         <div>
-            <h1>Posts</h1>
-            {posts ? (
-                <pre>{JSON.stringify(posts, null, 2)}</pre>  // Render posts data as JSON
-            ) : (
-                <p>No posts found!</p>
-            )}
-        </div>
+        <h1>Posts</h1>
+        {posts && posts.length > 0 ? (
+            posts.map(post => (
+                <Post 
+                    key={post.id}
+                    title={post.title}
+                    content={post.content}
+                    video={post.video}
+                    createdAt={post.created_at}
+                />
+            ))
+        ) : (
+            <p>No posts found!</p>
+        )}
+    </div>
     );
 }
 

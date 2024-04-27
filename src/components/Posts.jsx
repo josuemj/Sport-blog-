@@ -18,7 +18,7 @@ function Posts() {
         } catch (e) {
             setError(e.message);  // Store error message in state
             setLoading(false);  // Set loading to false because fetch is complete
-        }
+        }   
     }
 
     // UseEffect to call fetchPosts when component mounts
@@ -31,7 +31,6 @@ function Posts() {
     if (error) return <p>Error: {error}</p>;
     return (
         <div>
-        <h1>Posts</h1>
         {posts && posts.length > 0 ? (
             posts.map(post => (
                 <Post 

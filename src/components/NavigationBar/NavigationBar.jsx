@@ -1,9 +1,13 @@
-
+import './NavigationBar.css'
 function NavigationBar(){
     return(
         <>
-        <div>
-            xD
+        <div className="navBar">
+            
+            <h1>
+                Blog Sport
+            </h1>
+
         </div>
         </>
     )

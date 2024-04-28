@@ -1,0 +1,27 @@
+.adminNavBar {
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: space-around; /* Distribute space around the buttons */
+    height: 100px;
+}
+
+.adminNavBar button {
+    flex: 1; /* Each button takes equal space */
+    margin: 0 10px; /* Add margin between buttons */
+    padding: 10px 20px; /* Add padding to buttons */
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    height: 100%;
+    font-size: 20px; /* Increased font size */
+    font-weight: bold;
+    width: 100%;
+}
+
+.adminNavBar button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Add hover effect */
+}

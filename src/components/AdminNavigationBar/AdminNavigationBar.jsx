@@ -1,7 +1,8 @@
+import './AdminNavigationBar.css'
 function AdminNavigationBar(){
     return(
         <>
-        <div>
+        <div className="adminNavBar">
             <button>
                 New Post
             </button>

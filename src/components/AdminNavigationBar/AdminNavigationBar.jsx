@@ -12,6 +12,9 @@ function AdminNavigationBar() {
     const [showUpdatePostModal, setShowUpdatePostModal] = useState(false);
     const [showDeletePostModal, setShowDeletePostModal] = useState(false);
 
+    const [deletePostId, setDeletePostId] = useState(''); // State to hold the ID of the post to be deleted
+
+
     const openNewPostModal = () => setShowNewPostModal(true);
     const openUpdatePostModal = () => setShowUpdatePostModal(true);
     const openDeletePostModal = () => setShowDeletePostModal(true);
@@ -52,6 +55,30 @@ function AdminNavigationBar() {
             console.log('Post submitted successfully');
         } catch (error) {
             console.error('Error submitting post:', error.message);
+        }
+    };
+
+    const handleDelete = async () => {
+        if (!deletePostId) {
+            alert('Please enter a post ID.');
+            return;
+        }
+        const confirmDelete = window.confirm(`Are you sure you want to delete the post with ID ${deletePostId}?`);
+        if (confirmDelete) {
+            try {
+                const response = await fetch(`https://api.tiburoncin.lat/22397/posts/${deletePostId}`, {
+                    method: 'DELETE',
+                });
+                if (!response.ok) {
+                    throw new Error('Deletion failed');
+                }
+                console.log('Post deleted successfully');
+                setDeletePostId(''); // Reset the deletePostId
+                closeModals();
+                // Optionally refresh the list of posts here if needed
+            } catch (error) {
+                console.error('Error deleting post:', error.message);
+            }
         }
     };
 
@@ -103,14 +130,20 @@ function AdminNavigationBar() {
 
             {/* Delete Post Modal */}
             {showDeletePostModal && (
-                <div className="modal-background">
-                    <div className="modal-content">
-                        <span className="close" onClick={closeModals}>&times;</span>
-                        <h2>Delete Post Modal</h2>
-                        {/* Add additional modal content here if needed */}
-                    </div>
+            <div className="modal-background">
+                <div className="modal-content">
+                    <span className="close" onClick={closeModals}>&times;</span>
+                    <h2>Delete Post</h2>
+                    <p>DELETE POST WITH ID:</p>
+                    <input
+                        type="number"
+                        value={deletePostId}
+                        onChange={e => setDeletePostId(e.target.value)}
+                    />
+                    <button onClick={handleDelete}>Delete</button>
                 </div>
-            )}
+            </div>
+    )}
         </>
     );
 }

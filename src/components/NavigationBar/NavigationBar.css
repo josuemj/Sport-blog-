@@ -4,6 +4,7 @@
     align-items: center;  /* Vertically center the content */
     justify-content: center;  /* Horizontally center the content */
     height: 150px;
+    width: 100%;
 }
 
 .navBar h1 {

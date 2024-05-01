@@ -2,9 +2,9 @@
 .post {
     margin: 30px auto; /* Center the post and add margin */
     max-width: 90%; /* Set a max-width for larger screens */
-    background-color: #d7cfcf; /* Light background for the post */
+    background-color: #979797dc; /* Light background for the post */
     padding: 20px; /* Padding around the content */
-    border-radius: 10px; /* Rounded corners for the post */
+    border-radius: 50px; /* Rounded corners for the post */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
     display: flex;
     flex-direction: column;

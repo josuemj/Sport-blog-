@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Post from './Post/Post';
-function Posts() {
+import AdminPost from './AdminPost/AdminPost';
+
+function AdminPosts() {
     const [posts, setPosts] = useState(null);  // State to store the API data
     const [loading, setLoading] = useState(true);  // State to track if data is loading
     const [error, setError] = useState(null);  // State to store any errors
@@ -13,6 +14,7 @@ function Posts() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
+            console.log(data)
             setPosts(data);  // Store the data in state
             setLoading(false);  // Set loading to false once data is loaded
         } catch (e) {
@@ -33,8 +35,8 @@ function Posts() {
         <div>
         {posts && posts.length > 0 ? (
             posts.map(post => (
-                <Post 
-                    key={post.id}
+                <AdminPost
+                    id={post.id}
                     title={post.title}
                     content={post.content}
                     video={post.video}
@@ -48,4 +50,4 @@ function Posts() {
     );
 }
 
-export default Posts;
+export default AdminPosts;

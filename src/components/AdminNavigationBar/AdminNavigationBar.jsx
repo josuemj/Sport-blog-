@@ -28,6 +28,8 @@ function AdminNavigationBar() {
         });
         setShowUpdatePostModal(false);
         setShowDeletePostModal(false);
+        setUpdateFormData({ id: '', title: '', content: '', video: '' });
+
     };
 
     const handleInputChange = (e) => {
@@ -36,6 +38,21 @@ function AdminNavigationBar() {
             [e.target.name]: e.target.value
         });
     };
+
+    const handleUpdateInputChange = (e) => {
+        const { name, value } = e.target;
+        setUpdateFormData({
+            ...updateFormData,
+            [name]: value
+        });
+    };
+
+    const [updateFormData, setUpdateFormData] = useState({
+        id: '',
+        title: '',
+        content: '',
+        video: ''
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -82,6 +99,26 @@ function AdminNavigationBar() {
         }
     };
 
+    const handleUpdateSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`https://api.tiburoncin.lat/22397/posts/${updateFormData.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updateFormData)
+            });
+            if (!response.ok) {
+                throw new Error('Failed to update post');
+            }
+            closeModals();
+            console.log('Post updated successfully');
+        } catch (error) {
+            console.error('Error updating post:', error.message);
+        }
+    };
+
+
+
     return (
         <>
             <div className="adminNavBar">
@@ -116,14 +153,19 @@ function AdminNavigationBar() {
                 </div>
             )}
 
-
             {/* Update Post Modal */}
             {showUpdatePostModal && (
                 <div className="modal-background">
                     <div className="modal-content">
                         <span className="close" onClick={closeModals}>&times;</span>
-                        <h2>Update Post Modal</h2>
-                        {/* Add additional modal content here if needed */}
+                        <h2>Update Post</h2>
+                        <form onSubmit={handleUpdateSubmit}>
+                            <input type="text" name="id" placeholder="Post ID" value={updateFormData.id} onChange={handleUpdateInputChange} required />
+                            <input type="text" name="title" placeholder="Title" value={updateFormData.title} onChange={handleUpdateInputChange} required />
+                            <textarea name="content" placeholder="Content" value={updateFormData.content} onChange={handleUpdateInputChange} required></textarea>
+                            <input type="text" name="video" placeholder="Video ID" value={updateFormData.video} onChange={handleUpdateInputChange} required />
+                            <button type="submit">Update Post</button>
+                        </form>
                     </div>
                 </div>
             )}

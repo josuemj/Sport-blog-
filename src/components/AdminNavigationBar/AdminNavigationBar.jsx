@@ -133,7 +133,7 @@ function AdminNavigationBar() {
                     <div className="modal-content">
                         <span className="close" onClick={closeModals}>&times;</span>
                         <h2>New Post</h2>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className="postModalnput">
                             <div className="form-group">
                                 <label htmlFor="title">Title:</label>
                                 <input type="text" id="title" name="title" value={formData.title} onChange={handleInputChange} />
@@ -153,27 +153,39 @@ function AdminNavigationBar() {
                 </div>
             )}
 
-            {/* Update Post Modal */}
             {showUpdatePostModal && (
                 <div className="modal-background">
                     <div className="modal-content">
                         <span className="close" onClick={closeModals}>&times;</span>
                         <h2>Update Post</h2>
-                        <form onSubmit={handleUpdateSubmit}>
-                            <input type="text" name="id" placeholder="Post ID" value={updateFormData.id} onChange={handleUpdateInputChange} required />
-                            <input type="text" name="title" placeholder="Title" value={updateFormData.title} onChange={handleUpdateInputChange} required />
-                            <textarea name="content" placeholder="Content" value={updateFormData.content} onChange={handleUpdateInputChange} required></textarea>
-                            <input type="text" name="video" placeholder="Video ID" value={updateFormData.video} onChange={handleUpdateInputChange} required />
+                        <form onSubmit={handleUpdateSubmit} className="postModalnput">
+                            <div className="form-group">
+                                <label>Post ID:</label>
+                                <input type="text" name="id" placeholder="Post ID" value={updateFormData.id} onChange={handleUpdateInputChange} required />
+                            </div>
+                            <div className="form-group">
+                                <label>Title:</label>
+                                <input type="text" name="title" placeholder="Title" value={updateFormData.title} onChange={handleUpdateInputChange} required />
+                            </div>
+                            <div className="form-group">
+                                <label>Content:</label>
+                                <textarea name="content" placeholder="Content" value={updateFormData.content} onChange={handleUpdateInputChange} required></textarea>
+                            </div>
+                            <div className="form-group">
+                                <label>Video ID:</label>
+                                <input type="text" name="video" placeholder="Video ID" value={updateFormData.video} onChange={handleUpdateInputChange} required />
+                            </div>
                             <button type="submit">Update Post</button>
                         </form>
                     </div>
                 </div>
             )}
 
+
             {/* Delete Post Modal */}
             {showDeletePostModal && (
             <div className="modal-background">
-                <div className="modal-content">
+                <div className="modal-content-delete">
                     <span className="close" onClick={closeModals}>&times;</span>
                     <h2>Delete Post</h2>
                     <p>DELETE POST WITH ID:</p>
@@ -182,7 +194,8 @@ function AdminNavigationBar() {
                         value={deletePostId}
                         onChange={e => setDeletePostId(e.target.value)}
                     />
-                    <button onClick={handleDelete}>Delete</button>
+                    <br></br>
+                    <button className="deleteButton" onClick={handleDelete}>Delete</button>
                 </div>
             </div>
     )}

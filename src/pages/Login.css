@@ -1,0 +1,6 @@
+.login-form{
+    display: flex;
+    background-color: bisque;
+    color: black;
+    flex-direction: column;
+}

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext'; // Only one import for useAuth
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleSubmit = async (event) => {
-        event.preventDefault(); // Prevent the default form submission behavior
+        event.preventDefault();
         const response = await fetch('https://api.tiburoncin.lat/22397/login', {
             method: 'POST',
             headers: {
@@ -19,9 +21,9 @@ function Login() {
         const data = await response.json();
 
         if (response.status === 200) {
-            navigate('/admincrud');  // Navigate to the AdminPage after successful login
+            login();
+            navigate('/admincrud');
         } else {
-            // Handle errors or invalid login here (e.g., show an error message)
             console.error(data.error);
             alert(data.error || 'Failed to login');
         }

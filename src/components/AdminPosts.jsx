@@ -8,6 +8,7 @@ function AdminPosts() {
 
     // Function to fetch data from the API
     async function fetchPosts() {
+        
         try {
             const response = await fetch('https://api.tiburoncin.lat/22397/posts');
             if (!response.ok) {
@@ -33,6 +34,9 @@ function AdminPosts() {
     if (error) return <p>Error: {error}</p>;
     return (
         <div>
+        <div className='button-container'>
+        <button className='refresh-button' onClick={fetchPosts}>Refresh</button>
+        </div>
         {posts && posts.length > 0 ? (
             posts.map(post => (
                 <AdminPost

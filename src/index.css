@@ -11,19 +11,23 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  background-image: url('https://w0.peakpx.com/wallpaper/678/338/HD-wallpaper-sports-other-baseball-basketball-collage-football-hockey-sport.jpg'); /* Add your image URL here */
-  background-size: cover; /* Cover the entire page */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  min-height: 100vh; /* Ensure the div covers the full viewport height */
-  width: 100vw; /* Ensure the div covers the full viewport width */
-
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://w0.peakpx.com/wallpaper/678/338/HD-wallpaper-sports-other-baseball-basketball-collage-football-hockey-sport.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100vw;
 }
 
 

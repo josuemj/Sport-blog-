@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext'; // Only one import for useAuth
+import './Login.css'
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -30,13 +31,19 @@ function Login() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div className='form-containter'>
+
+            <form onSubmit={handleSubmit} className='login-form'>
+            <label htmlFor='username'><h1>Login</h1></label>
+
             <label htmlFor='username'>Username</label>
             <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
             <label htmlFor='password'>Password</label>
             <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <input type="submit" value="Submit" />
-        </form>
+            <input type="submit" value="Login" />
+            </form>
+        </div>
+        
     );
 }
 

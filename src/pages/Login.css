@@ -1,6 +1,46 @@
-.login-form{
+.form-container {
     display: flex;
-    background-color: bisque;
-    color: black;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;  /* This should cover the viewport width */
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-form {
+    display: flex;
+    background-color: rgb(44, 55, 116);
+    color: white;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    width: 100%;  /* Increase width percentage for a bigger form */
+    max-width: 400px; /* This ensures form doesn't get too wide */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+input[type="submit"]:hover {
+    background-color: #365899;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
